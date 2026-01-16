@@ -61,6 +61,7 @@ func processPersoBlob(persoBlobBytes []byte, flags flags) (*certs, error) {
 
 	for _, c := range persoBlob.X509Certs {
 		log.Printf("Found cert: %s\n", c.KeyLabel)
+		log.Printf("value: \n%s\n", hex.Dump(c.Cert))
 		kID := strings.ReplaceAll(c.KeyLabel, " ", "_")
 		if kID == "" {
 			return nil, fmt.Errorf("empty key label in certificate")
